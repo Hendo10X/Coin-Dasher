@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dngok2g7t2q1o"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_p2y5k"]
+[ext_resource type="FontFile" uid="uid://ca1dqaxhvveqi" path="res://assets/Kenney Bold.ttf" id="2_uygn5"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_p2y5k")
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_uygn5")
+theme_override_font_sizes/font_size = 35
+text = "Coin dash"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 37.0
+offset_top = 63.0
+offset_right = -26.0
+offset_bottom = 116.0
+grow_horizontal = 2
+
+[node name="score" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uygn5")
+theme_override_font_sizes/font_size = 35
+text = "0"
+
+[node name="time" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_uygn5")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 2
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = -254.0
+offset_right = -61.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_uygn5")
+text = "Start"
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
